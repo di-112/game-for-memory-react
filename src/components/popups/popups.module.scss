@@ -1,0 +1,106 @@
+@import '../../mixins.scss';
+
+.result, .info {
+   position: absolute;
+   left: 0;
+   top: 0;
+   text-align: center;
+   width: 100%;
+   min-height: 100%;
+   z-index: 2;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background:rgba(0,0,0,0.8);
+   transition: all 0.8s ease 0s;
+   animation: move 0.8s;
+   @media (max-width:960px) {
+      justify-content: flex-start;
+      padding: 50px 0 0;
+   }
+}
+@keyframes move {
+   0% {
+      opacity: 0;
+
+      }
+   100% {
+      opacity: 1;
+
+   }
+}
+  
+.info p, .result p{
+   color: black;
+   text-transform: none;
+   @include adaptiv-font(25,15);
+   text-shadow: 1px 0 1px #fff, 
+   0 1px 1px #fff, 
+   -1px 0 1px #fff, 
+   0 -1px 1px #fff;
+}
+
+.result p{
+   font-family: Arial, Helvetica, sans-serif;
+   margin-bottom: 20px;
+   @include adaptiv-font(30,20);
+}
+
+.info__imgs{
+   display: flex;
+   align-items: center;
+   @media (max-width:960px) {
+      flex-direction: column;
+   }
+   margin: 0 -20px;
+}
+@media (max-width:960px) {
+   .info__arr{
+      transform: scale(0.7) rotate(90deg);
+   }
+}
+
+.info__img{
+   width: 17.8vw;
+   margin: 20px;
+}
+
+.info button:hover{
+   transform: none;
+}
+
+.result img{
+   width: 30vw;
+   height: auto;
+   border-radius: 35px;
+   background: black;
+   border: 2px solid black;
+   box-shadow: 0 0 20px black;   
+}
+
+.result__loose, .result__win, .info__content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 70px 150px;
+   border: 7px solid black;
+   background: rgba(255,255,255,0.8);
+   max-width: 50%;   
+}
+
+.info__content{
+   padding: 20px 70px;
+}
+
+.play_again, .btn_open_game {
+   margin-top: 40px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 20px;
+   min-width: 0px;
+
+}
+.play_again:hover{
+   transform: none;
+}

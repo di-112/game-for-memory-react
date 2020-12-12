@@ -1,0 +1,11 @@
+
+.gameComplex{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin: 0 -10px;
+}
+
+.gameComplex a{
+  margin: 0 10px;
+}
