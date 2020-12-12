@@ -33,7 +33,6 @@ const GameGrid = (props) => {
    }, [props.isStartGame,props.time])
 
    if(props.time===0)return < ContainerLoose/>
-   if(props.isShowLearn)return < Learn toggleShowLearn={props.toggleShowLearn}/>
    if(props.opensItems.length === props.countItems)return < ContainerWin />
    return (
       <div className={styles.game}>
@@ -54,7 +53,7 @@ const GameGrid = (props) => {
             }
           </div>
           <progress className={styles.progressbar} value={props.opensItems.length} max={props.countItems}></progress>
-         
+         {props.isShowLearn&&< Learn toggleShowLearn={props.toggleShowLearn}/>}
       </div>
    )
 }
