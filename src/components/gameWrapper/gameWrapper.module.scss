@@ -17,3 +17,8 @@
    background: url(../../img/back_rain.jpg) center/cover;
 }
 
+
+
+@media (max-width: 960px){
+   .wrapper{flex-direction: column;}
+}

@@ -75,4 +75,14 @@ $heightItem: calc(100vh/8);
  
 
 
+ @media (max-width: 960px){
+  
+  .gameGridEasy, .gameGridMiddle, .gameGridHard{ order:2;  width: calc(4*#{$widthItem});}
+  .time {order:  2;}
+.progressbar {
+  order: 4;
+}
+ 
+}
+
  

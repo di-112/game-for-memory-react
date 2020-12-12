@@ -9,3 +9,9 @@
 .gameComplex a{
   margin: 0 10px;
 }
+
+
+@media (max-width: 960px){
+  .gameComplex{flex-direction: column; order: 1;}
+  .gameComplex a{margin: 10px 0 10px 0;}
+}

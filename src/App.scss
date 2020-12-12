@@ -40,13 +40,3 @@ button:hover{
    cursor: pointer;
    transform: scale(0.9);
 }
-
-@media (max-width: 960px){
-   .wrapper{flex-direction: column;}
-   .game__complex{flex-direction: column; order: 3;}
-   .game__txt{ order: 1;}
-   .game__grid{ order: 2; margin-bottom: 20px;}
-   .game__complex button{margin-bottom: 15px;}
-   .buttons_backgrd button{ margin: 20px 0;}
-    body{  overflow: auto ; }
-}
