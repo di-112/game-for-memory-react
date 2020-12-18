@@ -15,7 +15,7 @@
    background:rgba(0,0,0,0.8);
    transition: all 0.8s ease 0s;
    animation: move 0.8s;
-   @media (max-width:960px) {
+   @media (max-width:1200px) {
       justify-content: flex-start;
       padding: 50px 0 0;
    }
@@ -53,9 +53,9 @@
    @media (max-width:960px) {
       flex-direction: column;
    }
-   margin: 0 -20px;
+   margin: 20px -20px 0;
 }
-@media (max-width:960px) {
+@media (max-width:1200px) {
    .info__arr{
       transform: scale(0.7) rotate(90deg);
    }
@@ -63,6 +63,7 @@
 
 .info__img{
    width: 17.8vw;
+   min-width: 100px;
    margin: 20px;
 }
 
@@ -86,13 +87,19 @@
    justify-content: center;
    align-items: center;
    padding: 70px 150px;
+   @media (max-width:600px) {
+      padding: 70px 20px;
+      }
    border: 7px solid black;
    background: rgba(255,255,255,0.8);
-   max-width: 50%;   
+   max-width: 1000px;   
 }
 
 .info__content{
    padding: 20px 70px;
+   @media (max-width:1200px) {
+      padding: 20px;
+      }
 }
 
 .play_again, .btn_open_game {

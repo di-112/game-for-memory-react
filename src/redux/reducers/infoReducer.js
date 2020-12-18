@@ -133,7 +133,7 @@ const setGameProperties = (dispatch ,countItems, time, colors) => {
    dispatch(setCountItems(countItems))
    dispatch(setAllTime(time))
    dispatch(setTime(time))
-   dispatch(setColors(colors.concat(colors)))
+   dispatch(setColors(colors.concat(colors).sort(()=>0.5-Math.random())))
 }
 
 

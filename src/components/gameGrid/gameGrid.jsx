@@ -28,8 +28,8 @@ const GameGrid = (props) => {
    }, [props.choosenItems])
 
     useEffect(()=>{
-       if(props.isStartGame)timeout=setTimeout(()=>{props.setTime(props.time-1)},800)  
-       else  clearTimeout(timeout)
+      if(props.isStartGame)timeout=setTimeout(()=>{props.setTime(props.time-1)},800)  
+      else  clearTimeout(timeout)
    }, [props.isStartGame,props.time])
 
    if(props.time===0)return < ContainerLoose/>
