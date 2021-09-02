@@ -1,5 +1,6 @@
 @import 'nule.scss';
 @import 'mixins.scss';
+@import 'scss-vars/colors.scss';
 
 *{
    font-size: 15;
@@ -9,10 +10,11 @@
 
 
 html, body{
-   height: 100vh; 
+   height: 100vh;
 }
 
-button, a{
+button, a {
+   cursor: pointer;
    padding: 1.85vh 2vw;
    text-align: center;
    background: black;
@@ -25,18 +27,28 @@ button, a{
    transition: transform 0.5s ease 0s;
 }
 
-a.active, button.active{
-   border: 3px solid green;
-   color: green;
-   transition: all 0.8s ease 0s;
-   box-shadow: 0 0 50px rgba(0,128,0,0.5);
+a.active, button.active {
+   transition: all 0.2s ease 0s;
+   box-shadow: 0 0 50px rgba(245,152,78,0.5);
+}
+button.active {
+   border: 3px solid $orange;
+   color: $orange;
+}
+a.active {
+   border: 3px solid $green;
+   color: $green;
 }
 
+button:hover{
+   transform: scale(0.9);
+   color: $orange;
+}
+a:hover{
+   transform: scale(0.9);
+   color: $green;
+}
 a.active:hover, button.active:hover{
    transform: none;
 }
 
-button:hover{
-   cursor: pointer;
-   transform: scale(0.9);
-}

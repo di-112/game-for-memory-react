@@ -6,6 +6,8 @@ import { addChoosenItem, addOpensItem, createGame, setChoosenItemsInNule, setTim
 import { compose } from 'redux'
 import { withRouter } from 'react-router'
 import { ContainerLoose, ContainerWin, Learn } from '../popups/popups'
+import clsx from 'clsx'
+
 let timeout;
 const GameGrid = (props) => {
 
@@ -37,8 +39,8 @@ const GameGrid = (props) => {
    return (
       <div className={styles.game}>
          <PanelComplexity />
-          <p className={`${styles.time} ${props.time<11?styles.redTime:''}`}>time: {props.time}</p>
-          <div className={complexity==='hard'?styles.gameGridHard:styles.gameGridEasy}> 
+          <div className={`${styles.time} ${props.time<11?styles.redTime:''}`}>time: {props.time}</div>
+          <div className={clsx(styles.gameGrid, { [styles.gameGridEasy]: complexity === 'easy', [styles.gameGridMiddle]: complexity === 'middle', [styles.gameGridHard]: complexity === 'hard'})}> 
             {  
                props.colors.map((color, id)=> {
                   return (

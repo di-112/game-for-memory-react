@@ -4,13 +4,13 @@ import { withRouter } from 'react-router'
 import { compose } from 'redux'
 import { createGame, toggleStartGame, toggleWin } from '../../redux/reducers/infoReducer'
 import styles from './panelStartGame.module.scss'
-
+import clsx from 'clsx'
 
 const PanelStartGame = ({time, toggleStartGame, toggleWin, isStartGame, createGame, ...props}) => {
 
    let complex = props.location.pathname.split('').slice(1).join('')
    return (
-      <div className={styles.panelStartGame}>
+      <div className={clsx('box', styles.panelStartGame)}>
          <button onClick={()=>toggleStartGame(true)}
             className={styles.startGame+' '+(isStartGame&&styles.active)}
          >Start</button>
