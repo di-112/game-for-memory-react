@@ -1,4 +1,6 @@
 @import '../../mixins.scss';
+@import '../../scss-vars/colors.scss';
+@import '../../scss-vars/monitors.scss';
 
 .result, .info {
    position: absolute;
@@ -13,11 +15,16 @@
    justify-content: center;
    align-items: center;
    background:rgba(0,0,0,0.8);
-   transition: all 0.8s ease 0s;
-   animation: move 0.8s;
-   @media (max-width:1200px) {
+   transition: all 0.3s ease 0s;
+   animation: move 0.2s;
+
+   @media (max-width: #{$sm}px) {
       justify-content: flex-start;
-      padding: 50px 0 0;
+      padding: 10% 0 0;
+   }
+   @media (min-width: #{$sm + 1}px) {
+      justify-content: flex-start;
+      padding: 5% 0 0;
    }
 }
 @keyframes move {
@@ -43,7 +50,7 @@
 
 .result p{
    font-family: Arial, Helvetica, sans-serif;
-   margin-bottom: 20px;
+   margin-bottom: 40px;
    @include adaptiv-font(30,20);
 }
 
@@ -75,10 +82,24 @@
    width: 30vw;
    min-width: 200px;
    height: auto;
-   border-radius: 35px;
+   border-radius: 16px;
    background: black;
-   border: 2px solid black;
-   box-shadow: 0 0 20px black;   
+   border: 3px solid $white;
+   box-shadow: 0 0 20px black;
+}
+.result__loose img {
+   border-color: $red;
+}
+.result__win img {
+   border-color: $green;
+}
+.info__content img {
+   border-color: $blue-2;
+}
+.result__loose > *:not(:last-child),
+.result__win > *:not(:last-child),
+.info__content > *:not(:last-child) {
+   margin-bottom: 40px;
 }
 
 .result__loose, .result__win, .info__content {
@@ -86,11 +107,12 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   padding: 70px 150px;
+   padding: 40px 150px;
    @media (max-width:600px) {
-      padding: 70px 20px;
-      }
-   border: 7px solid black;
+      padding: 40px 20px;
+   }
+   border: 7px solid $white;
+   border-radius: 16px;
    background: rgba(255,255,255,0.8);
    max-width: 1000px;   
 }
@@ -99,11 +121,13 @@
    padding: 20px 70px;
    @media (max-width:1200px) {
       padding: 20px;
-      }
+   }
+   & p {
+      line-height: 1.3em;
+   }
 }
 
 .play_again, .btn_open_game {
-   margin-top: 40px;
    font-family: Arial, Helvetica, sans-serif;
    @include adaptiv-font(20,15);
    min-width: 120px;

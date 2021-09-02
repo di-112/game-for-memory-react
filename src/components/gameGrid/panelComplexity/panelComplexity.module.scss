@@ -1,17 +1,18 @@
+@import '../../../scss-vars/margins.scss';
+@import '../../../scss-vars/colors.scss';
 
 .gameComplex{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   margin: 0 -10px;
+   // margin: 0 -10px;
 }
 
-.gameComplex a{
-  margin: 0 10px;
+.gameComplex a:not(:last-child){
+  margin-right: #{$mn-between-btns}px;
 }
 
-
-@media (max-width: 1200px){
-  .gameComplex{flex-direction: column; order: 1;}
-  .gameComplex a{margin: 10px 0 10px 0;}
-}
+// @media (max-width: 1200px){
+//   .gameComplex{flex-direction: column; order: 1;}
+//   .gameComplex a{margin: 10px 0 10px 0;}
+// }
