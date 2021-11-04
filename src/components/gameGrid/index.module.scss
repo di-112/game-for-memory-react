@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@import '../../scss/mixins.scss';
 
 .game {
    flex: 1 1 33.33%;
@@ -7,14 +7,14 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;  
+   align-items: center;
 }
 
 $widthItem: calc(100vh/8);
 $heightItem: calc(100vh/8);
 
 .gameGridEasy, .gameGridMiddle, .gameGridHard{
-  display: flex; 
+  display: flex;
   justify-content: center;
   flex-wrap: wrap;
   opacity: 0.9;
@@ -39,9 +39,9 @@ $heightItem: calc(100vh/8);
    color: white;
    text-transform: uppercase;
    margin: 40px 0;
-   text-shadow: 1px 0 1px #000, 
-   0 1px 1px #000, 
-   -1px 0 1px #000, 
+   text-shadow: 1px 0 1px #000,
+   0 1px 1px #000,
+   -1px 0 1px #000,
    0 -1px 1px #000;
 }
 
@@ -57,17 +57,17 @@ $heightItem: calc(100vh/8);
    min-width: 280px;
    border-radius: 30px;
  }
- 
+
  .progressbar::-webkit-progress-bar {
    border-radius: 30px;
    background: rgba(255, 255, 255, 0.5);
  }
- 
+
  .progressbar::-webkit-progress-value {
    background: rgba(9, 104, 9, 0.8);
    border-radius: 30px;
  }
- 
+
  .progressbar::-moz-progress-bar {
    background: rgba(9, 104, 9, 0.8);
    border-radius: 30px
@@ -82,4 +82,3 @@ $heightItem: calc(100vh/8);
   }
 }
 
- 

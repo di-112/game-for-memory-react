@@ -1,15 +1,14 @@
-@import 'nule.scss';
-@import 'mixins.scss';
+@import 'nule';
+@import 'mixins';
 
 *{
-   font-size: 15;
+   font-size: 15px;
    font-family: 'Sansita Swashed', cursive;
    font-weight: 700;
 }
 
-
 html, body{
-   height: 100vh; 
+   height: 100vh;
 }
 
 button, a{
