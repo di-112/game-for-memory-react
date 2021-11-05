@@ -60,7 +60,9 @@ export const WinPopup = () => {
           <p>Win!!!</p>
           <p className={styles.result__time}>
             You result:
+            {' '}
             {allTime - time}
+            {' '}
             seconds
           </p>
         </div>
