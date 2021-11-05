@@ -1,0 +1,128 @@
+@import "../../scss/mixins.scss";
+
+.result,
+.info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 0.8s ease 0s;
+  animation: move 0.8s;
+
+  @media (max-width: 1200px) {
+    justify-content: flex-start;
+    padding: 50px 0 0;
+  }
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.info p,
+.result p {
+  @include adaptiv-font(25,15);
+
+  text-shadow:
+    1px 0 1px #fff,
+    0 1px 1px #fff,
+    -1px 0 1px #fff,
+    0 -1px 1px #fff;
+  text-transform: none;
+  color: black;
+}
+
+.result p {
+  @include adaptiv-font(30,20);
+
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.info__images {
+  display: flex;
+  align-items: center;
+  margin: 20px -20px 0;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1200px) {
+  .info__arr {
+    transform: scale(0.7) rotate(90deg);
+  }
+}
+
+.info__img {
+  margin: 20px;
+  width: 17.8vw;
+  min-width: 100px;
+}
+
+.info button:hover {
+  transform: none;
+}
+
+.result img {
+  border: 2px solid black;
+  border-radius: 35px;
+  width: 30vw;
+  height: auto;
+  min-width: 200px;
+  box-shadow: 0 0 20px black;
+  background: black;
+}
+
+.result__loose,
+.result__win,
+.info__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid black;
+  padding: 70px 150px;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 600px) {
+    padding: 70px 20px;
+  }
+}
+
+.info__content {
+  padding: 20px 70px;
+
+  @media (max-width: 1200px) {
+    padding: 20px;
+  }
+}
+
+.play_again,
+.btn_open_game {
+  @include adaptiv-font(20,15);
+
+  margin-top: 40px;
+  min-width: 120px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.play_again:hover {
+  transform: none;
+}

@@ -1,0 +1,87 @@
+@import "../../scss/mixins.scss";
+
+.game {
+  display: flex;
+  flex: 1 1 33.33%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  min-height: 500px;
+}
+
+$widthItem: calc(100vh / 8);
+$heightItem: calc(100vh / 8);
+
+.gameGridEasy,
+.gameGridMiddle,
+.gameGridHard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: calc(4 * #{$widthItem});
+  opacity: 0.9;
+}
+
+.gameGridHard {
+  width: calc(5 * #{$widthItem});
+}
+
+.gridItem {
+  border: 2px solid white;
+  width: $widthItem;
+  height: $heightItem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.time {
+  @include adaptiv-font(25, 20);
+
+  margin: 40px 0;
+  text-shadow:
+    1px 0 1px #000,
+    0 1px 1px #000,
+    -1px 0 1px #000,
+    0 -1px 1px #000;
+  text-transform: uppercase;
+  color: white;
+}
+
+.redTime {
+  color: red;
+}
+
+.progressbar {
+  margin-top: 40px;
+  border-radius: 30px;
+  width: 20vw;
+  height: 25px;
+  min-width: 280px;
+}
+
+.progressbar::-webkit-progress-bar {
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.progressbar::-webkit-progress-value {
+  border-radius: 30px;
+  background: rgba(9, 104, 9, 0.8);
+}
+
+.progressbar::-moz-progress-bar {
+  border-radius: 30px;
+  background: rgba(9, 104, 9, 0.8);
+}
+
+@media (max-width: 1200px) {
+  .gameGridEasy,
+  .gameGridMiddle,
+  .gameGridHard { order: 2; width: calc(4 * #{$widthItem}); }
+  .time { order: 2; }
+
+  .progressbar {
+    order: 4;
+  }
+}
