@@ -1,5 +1,5 @@
 import { ACTION_TYPES } from '../actions/action-types'
-import { BACKGROUND_TYPES, COLORS, COMPLEXITY } from '../../enums'
+import { BACKGROUND_TYPES, PICTURES, COMPLEXITY } from '../../enums'
 
 const {
   SET_BACKGROUND,
@@ -11,7 +11,7 @@ const {
   RESET_OPENS_ITEMS,
   RESET_CHOOSEN_ITEMS,
   ADD_OPENS_ITEM,
-  SET_COLORS,
+  SET_PICTURES,
   TOGGLE_SHOW_LEARN,
   TOGGLE_START_GAME,
   TOGGLE_WIN,
@@ -22,7 +22,7 @@ const initialState = {
   background: BACKGROUND_TYPES.SEA,
   complexityGame: COMPLEXITY.EASY,
   countItems: 12,
-  colors: COLORS.filter((_, index) => index < 6),
+  pictures: PICTURES.filter((_, index) => index < 6),
   isShowLearn: true,
   isStartGame: false,
   isWin: false,
@@ -49,7 +49,7 @@ const infoReducer = (state = initialState, action = {}) => {
 
     case SET_COUNT_ITEMS: return ({ ...state, countItems: action.countItems })
 
-    case SET_COLORS: return ({ ...state, colors: [...action.colors] })
+    case SET_PICTURES: return ({ ...state, pictures: [...action.pictures] })
 
     case RESET_OPENS_ITEMS: return ({ ...state, opensItems: [] })
 

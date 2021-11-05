@@ -1,23 +1,13 @@
+import { getPictures } from './utils'
+
+export const PICTURES = getPictures()
+
 export const BACKGROUND_TYPES = {
   RAIN: 'rain',
   SEA: 'sea',
   FIRE: 'fire',
 }
-
-export const COLORS = [
-  'gray',
-  'green',
-  'red',
-  'yellow',
-  'blueviolet',
-  'peru',
-  'Aqua',
-  'DarkOrange',
-  'Fuchsia',
-  'DarkSlateGray',
-]
-
-export const DEFAULT_COLOR = 'black'
+export const DEFAULT_COLOR = 'rgba(0, 0, 0, .9)'
 
 export const ACTIVE_CLASS = 'active'
 
