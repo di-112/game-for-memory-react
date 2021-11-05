@@ -20,7 +20,6 @@ $heightItem: calc(100vh / 8);
   flex-wrap: wrap;
   justify-content: center;
   width: calc(4 * #{$widthItem});
-  opacity: 0.9;
 }
 
 .gameGridHard {
@@ -28,7 +27,7 @@ $heightItem: calc(100vh / 8);
 }
 
 .gridItem {
-  border: 2px solid white;
+  border: 1px solid white;
   width: $widthItem;
   height: $heightItem;
   box-sizing: border-box;

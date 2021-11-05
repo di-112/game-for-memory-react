@@ -30,7 +30,7 @@ const GameGrid = () => {
     time,
     isStartGame,
     countItems,
-    colors,
+    pictures,
     opensItems,
     choosenItems,
     isShowLearn,
@@ -38,7 +38,7 @@ const GameGrid = () => {
     time: state?.info.time,
     isStartGame: state?.info.isStartGame,
     countItems: state?.info.countItems,
-    colors: state?.info.colors,
+    pictures: state?.info.pictures,
     opensItems: state?.info.opensItems,
     choosenItems: state?.info.choosenItems,
     isShowLearn: state?.info.isShowLearn,
@@ -59,7 +59,7 @@ const GameGrid = () => {
 
   useEffect(() => {
     if (choosenItems.length === 2) {
-      if (isRightChoose(choosenItems, colors)) {
+      if (isRightChoose(choosenItems, pictures)) {
         choosenItems.map(item => addOpensItem(item))
         resetChoosenItems()
       } else setTimeout(() => resetChoosenItems(), TIME_SHOW_ITEM)
@@ -81,11 +81,18 @@ const GameGrid = () => {
         {`time: ${time}`}
       </p>
       <div className={complexity === COMPLEXITY.HARD ? styles.gameGridHard : styles.gameGridEasy}>
-        {colors.map((color, id) => (
+        {pictures.map((picture, id) => (
           <div
             key={id}
             onClick={isStartGame ? () => handlerCLickItem(id) : null}
-            style={{ background: isOpenedNowItem(id, opensItems, choosenItems) ? color : DEFAULT_COLOR }}
+            style={{
+              background:
+                  `${DEFAULT_COLOR} ${
+                    isOpenedNowItem(id, opensItems, choosenItems)
+                      ? `url(${picture}) center / 85% no-repeat`
+                      : ''
+                  }`,
+            }}
             className={styles.gridItem}
           />
         ))}
