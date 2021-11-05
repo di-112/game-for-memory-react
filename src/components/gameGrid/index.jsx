@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import PanelComplexity from './panelComplexity'
+import { LoosePopup, WinPopup, LearnPopup } from '../popups'
 import {
   addChoosenItemAC,
   addOpensItemAC,
@@ -10,8 +11,12 @@ import {
   setTimeAC,
   toggleShowLearnAC,
 } from '../../redux/actions/actions'
-import { LoosePopup, WinPopup, LearnPopup } from '../popups'
-import { COMPLEXITY } from '../../enums'
+import {
+  COMPLEXITY, DEFAULT_COLOR, TIME_SHOW_ITEM,
+} from '../../enums'
+import {
+  isGameOver, isGameWin, isRightChoose, getComplexity, isOpenedNowItem,
+} from '../../utils'
 import styles from './index.module.scss'
 
 let timeout
@@ -19,7 +24,7 @@ let timeout
 const GameGrid = () => {
   const location = useLocation()
 
-  const complexity = location.pathname.split('').slice(1).join('')
+  const dispatch = useDispatch()
 
   const {
     time,
@@ -39,10 +44,14 @@ const GameGrid = () => {
     isShowLearn: state?.info.isShowLearn,
   }))
 
-  const dispatch = useDispatch()
+  const complexity = getComplexity(location)
+
   const createGame = complexity => dispatch(createGameThunk(complexity))
   const addOpensItem = item => dispatch(addOpensItemAC(item))
   const resetChoosenItems = () => dispatch(resetChoosenItemsAC())
+  const handlerCLickItem = id => {
+    if (!opensItems.includes(id) && choosenItems.length < 2) dispatch(addChoosenItemAC(id))
+  }
 
   useEffect(() => {
     createGame(complexity)
@@ -50,43 +59,33 @@ const GameGrid = () => {
 
   useEffect(() => {
     if (choosenItems.length === 2) {
-      if (colors[choosenItems[0]] === colors[choosenItems[1]] && choosenItems[0] !== choosenItems[1]) {
-        addOpensItem(choosenItems[0])
-        addOpensItem(choosenItems[1])
+      if (isRightChoose(choosenItems, colors)) {
+        choosenItems.map(item => addOpensItem(item))
         resetChoosenItems()
-      } else setTimeout(() => resetChoosenItems(), 500)
+      } else setTimeout(() => resetChoosenItems(), TIME_SHOW_ITEM)
     }
   }, [choosenItems])
 
   useEffect(() => {
-    if (isStartGame) {
-      timeout = setTimeout(() => {
-        dispatch(setTimeAC((time - 1)))
-      }, 1000)
-    } else clearTimeout(timeout)
+    if (isStartGame) timeout = setTimeout(() => dispatch(setTimeAC((time - 1))), 1000)
+    else clearTimeout(timeout)
   }, [isStartGame, time])
 
-  if (time === 0) return <LoosePopup />
-  if (opensItems.length === countItems) return <WinPopup />
-
-  const checkAndAddItem = id => {
-    if (!opensItems.includes(id) && choosenItems.length < 2) dispatch(addChoosenItemAC(id))
-  }
+  if (isGameOver(time)) return <LoosePopup />
+  if (isGameWin(opensItems, countItems)) return <WinPopup />
 
   return (
     <div className={styles.game}>
       <PanelComplexity />
       <p className={`${styles.time} ${time < 11 && styles.redTime}`}>
-        {' '}
-        time:
-        {time}
+        {`time: ${time}`}
       </p>
       <div className={complexity === COMPLEXITY.HARD ? styles.gameGridHard : styles.gameGridEasy}>
         {colors.map((color, id) => (
           <div
             key={id}
-            onClick={isStartGame ? () => checkAndAddItem(id) : null}
-            style={{ background: opensItems.includes(id) || choosenItems.includes(id) ? color : 'black' }}
+            onClick={isStartGame ? () => handlerCLickItem(id) : null}
+            style={{ background: isOpenedNowItem(id, opensItems, choosenItems) ? color : DEFAULT_COLOR }}
             className={styles.gridItem}
           />
         ))}

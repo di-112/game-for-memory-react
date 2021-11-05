@@ -56,9 +56,9 @@ export const WinPopup = () => {
   return (
     <div className={styles.result}>
       <div className={styles.result__win}>
-        <div className={styles.rsult__info}>
+        <div className={styles}>
           <p>Win!!!</p>
-          <p className={styles.result__time}>
+          <p className={styles}>
             You result:
             {' '}
             {allTime - time}
@@ -84,10 +84,10 @@ export const LearnPopup = () => {
     <div className={styles.info}>
       <div className={styles.info__content}>
         <p>{LEAR_POPUP_TEXT}</p>
-        <div className={styles.info__imgs}>
-          <img className={styles.info__img} src={beforeImg} alt="" />
-          <img className={styles.info__arr} src={arrImg} alt="" width={70} />
-          <img className={styles.info__img} src={afterImg} alt="" />
+        <div className={styles.info__images}>
+          <img className={styles.info__img} src={beforeImg} alt="before" />
+          <img src={arrImg} alt="" width={70} />
+          <img className={styles.info__img} src={afterImg} alt="after" />
         </div>
         <button
           onClick={() => dispatch(toggleShowLearnAC(false))}

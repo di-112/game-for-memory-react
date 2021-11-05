@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import { createGameThunk, toggleStartGameAC } from '../../redux/actions/actions'
 import styles from './index.module.scss'
+import { getComplexity } from '../../utils'
 
 const PanelStartGame = () => {
   const location = useLocation()
+
   const dispatch = useDispatch()
 
   const isStartGame = useSelector(state => state?.info.isStartGame)
 
-  const complexity = location.pathname.split('').slice(1).join('')
+  const complexity = getComplexity(location)
 
   return (
     <div className={styles.panelStartGame}>
@@ -25,4 +27,4 @@ const PanelStartGame = () => {
   )
 }
 
-export default React.memo(PanelStartGame)
+export default PanelStartGame

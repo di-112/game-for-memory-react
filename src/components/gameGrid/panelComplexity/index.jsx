@@ -1,13 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './index.module.scss'
 import { COMPLEXITY } from '../../../enums'
+import styles from './index.module.scss'
 
 const PanelComplexity = () => (
   <nav className={styles.gameComplex}>
-    <NavLink to={`/${COMPLEXITY.EASY}`}>Easy</NavLink>
-    <NavLink to={`/${COMPLEXITY.MIDDLE}`}>Middle</NavLink>
-    <NavLink to={`/${COMPLEXITY.HARD}`}>Hard</NavLink>
+    {Object.keys(COMPLEXITY).map(key => <NavLink key={key} to={`/${COMPLEXITY[key]}`}>{COMPLEXITY[key]}</NavLink>)}
   </nav>
 )
 

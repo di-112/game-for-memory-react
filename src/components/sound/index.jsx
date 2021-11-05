@@ -32,4 +32,4 @@ const Sound = () => {
   )
 }
 
-export default React.memo(Sound)
+export default Sound

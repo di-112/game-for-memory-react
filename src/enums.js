@@ -17,6 +17,12 @@ export const COLORS = [
   'DarkSlateGray',
 ]
 
+export const DEFAULT_COLOR = 'black'
+
+export const ACTIVE_CLASS = 'active'
+
+export const TIME_SHOW_ITEM = 500
+
 export const COMPLEXITY = {
   EASY: 'easy',
   MIDDLE: 'middle',
