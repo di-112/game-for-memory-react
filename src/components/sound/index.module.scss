@@ -1,24 +1,25 @@
 
-.sound img{
-   filter: brightness(0) invert(1);
-   cursor: pointer;
+.sound img {
+  filter: brightness(0) invert(1);
+  cursor: pointer;
 }
 
-.sound{
-   position: absolute;
-   top: 6.48%;
-   left: 2.6%;
-   @media (max-width:500px) {
-      left: 20px;
-      top: 20px;
-      transform: scale(0.7);
-   }
-   min-width: 0;
-   background: none;
-   border: none;
-   padding: 0;
+.sound {
+  position: absolute;
+  left: 2.6%;
+  top: 6.48%;
+  border: none;
+  padding: 0;
+  min-width: 0;
+  background: none;
+
+  @media (max-width: 500px) {
+    left: 20px;
+    top: 20px;
+    transform: scale(0.7);
+  }
 }
 
-.sound:hover{
-   transform: none;
+.sound:hover {
+  transform: none;
 }

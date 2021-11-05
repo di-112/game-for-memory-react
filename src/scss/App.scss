@@ -1,41 +1,46 @@
-@import 'nule';
-@import 'mixins';
+@import "nule";
+@import "mixins";
 
-*{
-   font-size: 15px;
-   font-family: 'Sansita Swashed', cursive;
-   font-weight: 700;
+* {
+  font-family: "Sansita Swashed", cursive;
+  font-weight: 700;
+  font-size: 15px;
 }
 
-html, body{
-   height: 100vh;
+html,
+body {
+  height: 100vh;
 }
 
-button, a{
-   padding: 1.85vh 2vw;
-   text-align: center;
-   background: black;
-   min-width: 170px;
-   border: 3px solid white;
-   color: white;
-   text-transform: uppercase;
-   border-radius: 15px;
-   @include adaptiv-font(32,15);
-   transition: transform 0.5s ease 0s;
+button,
+a {
+  @include adaptiv-font(32,15);
+
+  border: 3px solid white;
+  border-radius: 15px;
+  padding: 1.85vh 2vw;
+  min-width: 170px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  background: black;
+  transition: transform 0.5s ease 0s;
 }
 
-a.active, button.active{
-   border: 3px solid green;
-   color: green;
-   transition: all 0.8s ease 0s;
-   box-shadow: 0 0 50px rgba(0,128,0,0.5);
+a.active,
+button.active {
+  border: 3px solid green;
+  box-shadow: 0 0 50px rgba(0, 128, 0, 0.5);
+  color: green;
+  transition: all 0.8s ease 0s;
 }
 
-a.active:hover, button.active:hover{
-   transform: none;
+a.active:hover,
+button.active:hover {
+  transform: none;
 }
 
-button:hover{
-   cursor: pointer;
-   transform: scale(0.9);
+button:hover {
+  transform: scale(0.9);
+  cursor: pointer;
 }
