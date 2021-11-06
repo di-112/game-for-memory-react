@@ -83,10 +83,17 @@ export const LearnPopup = () => {
   return (
     <div className={styles.info}>
       <div className={styles.info__content}>
-        <p>{LEAR_POPUP_TEXT}</p>
+        <div>
+          {LEAR_POPUP_TEXT.map(paragraph => (
+            <p>
+              {paragraph}
+              <br />
+            </p>
+          ))}
+        </div>
         <div className={styles.info__images}>
           <img className={styles.info__img} src={beforeImg} alt="before" />
-          <img src={arrImg} alt="" width={70} />
+          <img src={arrImg} alt="" width={60} />
           <img className={styles.info__img} src={afterImg} alt="after" />
         </div>
         <button
