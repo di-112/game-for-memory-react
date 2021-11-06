@@ -110,11 +110,13 @@
 .info__content {
   padding: 40px 70px;
   text-align: left;
+
   p {
-    text-indent: 25px;
     margin-bottom: 10px;
     line-height: 1.2;
+    text-indent: 25px;
   }
+
   @media (max-width: 1200px) {
     padding: 20px;
   }
