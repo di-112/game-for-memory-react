@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/game-for-memory-react/static/css/main.28698706.chunk.css",
-    "main.js": "/game-for-memory-react/static/js/main.08274c58.chunk.js",
-    "main.js.map": "/game-for-memory-react/static/js/main.08274c58.chunk.js.map",
+    "main.css": "/game-for-memory-react/static/css/main.28adc046.chunk.css",
+    "main.js": "/game-for-memory-react/static/js/main.af66bb64.chunk.js",
+    "main.js.map": "/game-for-memory-react/static/js/main.af66bb64.chunk.js.map",
     "runtime-main.js": "/game-for-memory-react/static/js/runtime-main.d3711642.js",
     "runtime-main.js.map": "/game-for-memory-react/static/js/runtime-main.d3711642.js.map",
     "static/js/2.b6428077.chunk.js": "/game-for-memory-react/static/js/2.b6428077.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.e3151ef4.chunk.js": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js",
     "static/js/3.e3151ef4.chunk.js.map": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js.map",
     "index.html": "/game-for-memory-react/index.html",
-    "static/css/main.28698706.chunk.css.map": "/game-for-memory-react/static/css/main.28698706.chunk.css.map",
+    "static/css/main.28adc046.chunk.css.map": "/game-for-memory-react/static/css/main.28adc046.chunk.css.map",
     "static/js/2.b6428077.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/2.b6428077.chunk.js.LICENSE.txt",
     "static/js/3.e3151ef4.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js.LICENSE.txt",
     "static/media/1.svg": "/game-for-memory-react/static/media/1.5a1176ae.svg",
@@ -23,11 +23,13 @@
     "static/media/7.svg": "/game-for-memory-react/static/media/7.3549a983.svg",
     "static/media/8.svg": "/game-for-memory-react/static/media/8.00a91ec4.svg",
     "static/media/9.svg": "/game-for-memory-react/static/media/9.a25c0365.svg",
+    "static/media/after.b3581979.png": "/game-for-memory-react/static/media/after.b3581979.png",
     "static/media/arr.d90b13b7.png": "/game-for-memory-react/static/media/arr.d90b13b7.png",
     "static/media/audio_fire.4b20d77a.mp3": "/game-for-memory-react/static/media/audio_fire.4b20d77a.mp3",
     "static/media/audio_rain.d007ef0d.mp3": "/game-for-memory-react/static/media/audio_rain.d007ef0d.mp3",
     "static/media/audio_sea.afda38ef.mp3": "/game-for-memory-react/static/media/audio_sea.afda38ef.mp3",
     "static/media/index.module.scss": "/game-for-memory-react/static/media/back_sea.f4351322.jpg",
+    "static/media/before.6cca7aa0.png": "/game-for-memory-react/static/media/before.6cca7aa0.png",
     "static/media/loose.239f8962.gif": "/game-for-memory-react/static/media/loose.239f8962.gif",
     "static/media/sound-off.6f6bfb9e.svg": "/game-for-memory-react/static/media/sound-off.6f6bfb9e.svg",
     "static/media/speaker-volume.d21cd86e.svg": "/game-for-memory-react/static/media/speaker-volume.d21cd86e.svg",
@@ -36,7 +38,7 @@
   "entrypoints": [
     "static/js/runtime-main.d3711642.js",
     "static/js/2.b6428077.chunk.js",
-    "static/css/main.28698706.chunk.css",
-    "static/js/main.08274c58.chunk.js"
+    "static/css/main.28adc046.chunk.css",
+    "static/js/main.af66bb64.chunk.js"
   ]
 }
