@@ -35,7 +35,7 @@
 
 .info p,
 .result p {
-  @include adaptiv-font(25,15);
+  @include adaptiv-font(23,15);
 
   text-shadow:
     1px 0 1px #fff,
@@ -56,7 +56,7 @@
 .info__images {
   display: flex;
   align-items: center;
-  margin: 20px -20px 0;
+  margin: 10px -20px 0;
 
   @media (max-width: 960px) {
     flex-direction: column;
@@ -73,6 +73,7 @@
   margin: 20px;
   width: 17.8vw;
   min-width: 100px;
+  max-width: 330px;
 }
 
 .info button:hover {
@@ -107,7 +108,14 @@
 }
 
 .info__content {
-  padding: 20px 70px;
+  padding: 40px 70px;
+  text-align: left;
+
+  p {
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-indent: 25px;
+  }
 
   @media (max-width: 1200px) {
     padding: 20px;
@@ -121,6 +129,10 @@
   margin-top: 40px;
   min-width: 120px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn_open_game {
+  margin-bottom: 0;
 }
 
 .play_again:hover {
