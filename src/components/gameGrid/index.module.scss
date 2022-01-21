@@ -35,6 +35,10 @@ $heightItem: calc(100vh / 8);
 }
 
 .time {
+  span {
+    display: inline-block;
+    @include adaptiv-font(25, 20);
+  }
   @include adaptiv-font(25, 20);
 
   margin: 40px 0;

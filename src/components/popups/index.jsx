@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
 import {
   createGameThunk, toggleLooseAC, toggleShowLearnAC, toggleWinAC,
 } from '../../redux/actions/actions'
@@ -10,6 +11,23 @@ import winGif from '../../img/win.gif'
 import beforeImg from '../../img/before.png'
 import arrImg from '../../img/arr.png'
 import afterImg from '../../img/after.png'
+
+const variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+    },
+  },
+}
 
 export const LoosePopup = () => {
   const dispatch = useDispatch()
@@ -22,7 +40,13 @@ export const LoosePopup = () => {
 
   return (
     <div className={styles.result}>
-      <div className={styles.result__loose}>
+      <motion.div
+        className={styles.result__loose}
+        initial="hidden"
+        animate="visible"
+        exit={variants.hidden}
+        variants={variants}
+      >
         <p>Loose(((</p>
         <img src={looseGif} alt="winner" />
         <button
@@ -31,7 +55,7 @@ export const LoosePopup = () => {
         >
           play again
         </button>
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -55,7 +79,13 @@ export const WinPopup = () => {
 
   return (
     <div className={styles.result}>
-      <div className={styles.result__win}>
+      <motion.div
+        className={styles.result__win}
+        initial="hidden"
+        animate="visible"
+        exit={variants.hidden}
+        variants={variants}
+      >
         <div className={styles}>
           <p>Win!!!</p>
           <p className={styles}>
@@ -73,7 +103,7 @@ export const WinPopup = () => {
         >
           play again
         </button>
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -81,8 +111,16 @@ export const WinPopup = () => {
 export const LearnPopup = () => {
   const dispatch = useDispatch()
   return (
-    <div className={styles.info}>
-      <div className={styles.info__content}>
+    <div
+      className={styles.info}
+    >
+      <motion.div
+        className={styles.info__content}
+        initial="hidden"
+        animate="visible"
+        exit={variants.hidden}
+        variants={variants}
+      >
         <div>
           {LEAR_POPUP_TEXT.map(paragraph => (
             <p>
@@ -102,7 +140,7 @@ export const LearnPopup = () => {
         >
           ok
         </button>
-      </div>
+      </motion.div>
     </div>
   )
 }
