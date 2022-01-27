@@ -17,23 +17,24 @@ const variants = {
 }
 
 const GameItems = ({
-  pictures, isStartGame, handlerCLickItem, opensItems, choosenItems,
+  pictures, isStartGame, handlerCLickItem, opensItems, chosenItems, isShowLearn,
 }) => pictures.map((picture, id) => (
   <motion.div
     key={id}
+    layoutId={!isShowLearn && 'gridItem'}
     style={{
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       background: DEFAULT_COLOR,
-      cursor: choosenItems.length > 1 || opensItems.includes(id) ? 'not-allowed' : 'pointer',
+      cursor: chosenItems.length > 1 || opensItems.includes(id) ? 'not-allowed' : 'pointer',
     }}
     onClick={isStartGame ? () => handlerCLickItem(id) : null}
     className={styles.gridItem}
   >
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {
-        isOpenedNowItem(id, opensItems, choosenItems) && (
+        isOpenedNowItem(id, opensItems, chosenItems) && (
         <motion.img
           src={picture}
           alt={picture}

@@ -30,7 +30,7 @@ const initialState = {
   time: 30,
   allTime: 30,
   opensItems: [],
-  choosenItems: [],
+  chosenItems: [],
 }
 
 const infoReducer = (state = initialState, action = {}) => {
@@ -55,11 +55,11 @@ const infoReducer = (state = initialState, action = {}) => {
 
     case ADD_OPENS_ITEM: return ({ ...state, opensItems: [...state.opensItems.concat([action.item])] })
 
-    case RESET_CHOOSEN_ITEMS: return ({ ...state, choosenItems: [] })
+    case RESET_CHOOSEN_ITEMS: return ({ ...state, chosenItems: [] })
 
     case ADD_CHOOSEN_ITEM: return ({
       ...state,
-      choosenItems: [...state.choosenItems.concat([action.item])],
+      chosenItems: [...state.chosenItems.concat([action.item])],
     })
 
     case TOGGLE_WIN: return ({

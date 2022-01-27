@@ -18,6 +18,7 @@ import {
 } from '../../utils'
 import styles from './index.module.scss'
 import GameItems from './gameItems'
+import ProgressBar from '../progressBar'
 
 let timeout
 
@@ -32,7 +33,7 @@ const GameGrid = () => {
     countItems,
     pictures,
     opensItems,
-    choosenItems,
+    chosenItems,
     isShowLearn,
   } = useSelector(state => state?.info)
 
@@ -42,7 +43,7 @@ const GameGrid = () => {
   const addOpensItem = item => dispatch(addOpensItemAC(item))
   const resetChoosenItems = () => dispatch(resetChoosenItemsAC())
   const handlerCLickItem = id => {
-    if (!opensItems.includes(id) && choosenItems.length < 2) dispatch(addChoosenItemAC(id))
+    if (!opensItems.includes(id) && chosenItems.length < 2) dispatch(addChoosenItemAC(id))
   }
 
   useEffect(() => {
@@ -50,13 +51,13 @@ const GameGrid = () => {
   }, [location.pathname])
 
   useEffect(() => {
-    if (choosenItems.length === 2) {
-      if (isRightChoose(choosenItems, pictures)) {
-        choosenItems.map(item => addOpensItem(item))
+    if (chosenItems.length === 2) {
+      if (isRightChoose(chosenItems, pictures)) {
+        chosenItems.map(item => addOpensItem(item))
         resetChoosenItems()
       } else setTimeout(() => resetChoosenItems(), TIME_SHOW_ITEM)
     }
-  }, [choosenItems])
+  }, [chosenItems])
 
   const control = useAnimation()
 
@@ -88,15 +89,14 @@ const GameGrid = () => {
         <motion.span animate={control}>{time}</motion.span>
       </p>
       <motion.div
-        layout
         className={complexity === COMPLEXITY.HARD ? styles.gameGridHard : styles.gameGridEasy}
       >
         <GameItems {...{
-          pictures, isStartGame, handlerCLickItem, opensItems, choosenItems,
+          pictures, isStartGame, handlerCLickItem, opensItems, chosenItems, isShowLearn,
         }}
         />
       </motion.div>
-      <progress className={styles.progressbar} value={opensItems.length} max={countItems} />
+      <ProgressBar />
     </div>
   )
 }
