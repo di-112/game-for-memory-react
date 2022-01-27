@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
+import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import PanelComplexity from './panelComplexity'
-import { LoosePopup, WinPopup, LearnPopup } from '../popups'
+import { LearnPopup, LoosePopup, WinPopup } from '../popups'
 import {
   addChoosenItemAC,
   addOpensItemAC,
@@ -11,13 +12,13 @@ import {
   setTimeAC,
   toggleShowLearnAC,
 } from '../../redux/actions/actions'
+import { COMPLEXITY, TIME_SHOW_ITEM } from '../../enums'
 import {
-  COMPLEXITY, DEFAULT_COLOR, TIME_SHOW_ITEM,
-} from '../../enums'
-import {
-  isGameOver, isGameWin, isRightChoose, getComplexity, isOpenedNowItem,
+  getComplexity, isGameOver, isGameWin, isRightChoose,
 } from '../../utils'
 import styles from './index.module.scss'
+import GameItems from './gameItems'
+import ProgressBar from '../progressBar'
 
 let timeout
 
@@ -32,17 +33,9 @@ const GameGrid = () => {
     countItems,
     pictures,
     opensItems,
-    choosenItems,
+    chosenItems,
     isShowLearn,
-  } = useSelector(state => ({
-    time: state?.info.time,
-    isStartGame: state?.info.isStartGame,
-    countItems: state?.info.countItems,
-    pictures: state?.info.pictures,
-    opensItems: state?.info.opensItems,
-    choosenItems: state?.info.choosenItems,
-    isShowLearn: state?.info.isShowLearn,
-  }))
+  } = useSelector(state => state?.info)
 
   const complexity = getComplexity(location)
 
@@ -50,7 +43,7 @@ const GameGrid = () => {
   const addOpensItem = item => dispatch(addOpensItemAC(item))
   const resetChoosenItems = () => dispatch(resetChoosenItemsAC())
   const handlerCLickItem = id => {
-    if (!opensItems.includes(id) && choosenItems.length < 2) dispatch(addChoosenItemAC(id))
+    if (!opensItems.includes(id) && chosenItems.length < 2) dispatch(addChoosenItemAC(id))
   }
 
   useEffect(() => {
@@ -58,47 +51,52 @@ const GameGrid = () => {
   }, [location.pathname])
 
   useEffect(() => {
-    if (choosenItems.length === 2) {
-      if (isRightChoose(choosenItems, pictures)) {
-        choosenItems.map(item => addOpensItem(item))
+    if (chosenItems.length === 2) {
+      if (isRightChoose(chosenItems, pictures)) {
+        chosenItems.map(item => addOpensItem(item))
         resetChoosenItems()
       } else setTimeout(() => resetChoosenItems(), TIME_SHOW_ITEM)
     }
-  }, [choosenItems])
+  }, [chosenItems])
 
-  useEffect(() => {
-    if (isStartGame) timeout = setTimeout(() => dispatch(setTimeAC((time - 1))), 1000)
-    else clearTimeout(timeout)
+  const control = useAnimation()
+
+  useEffect(async () => {
+    if (isStartGame) {
+      if (time < 11) {
+        await control.start({ scale: 2, transition: { duration: 0.25 } })
+        await control.start({ scale: 1, transition: { duration: 0.25 } })
+      }
+      if (time > 0) {
+        timeout = setTimeout(() => dispatch(setTimeAC((time - 1))), 1000)
+      }
+      return
+    }
+    clearTimeout(timeout)
   }, [isStartGame, time])
-
-  if (isGameOver(time)) return <LoosePopup />
-  if (isGameWin(opensItems, countItems)) return <WinPopup />
 
   return (
     <div className={styles.game}>
+      <AnimatePresence>
+        {isGameOver(time) && <LoosePopup />}
+        {isGameWin(opensItems, countItems) && <WinPopup />}
+        {isShowLearn && <LearnPopup toggleShowLearn={() => dispatch(toggleShowLearnAC(false))} />}
+      </AnimatePresence>
       <PanelComplexity />
       <p className={`${styles.time} ${time < 11 && styles.redTime}`}>
-        {`time: ${time}`}
+        time:
+        {' '}
+        <motion.span animate={control}>{time}</motion.span>
       </p>
-      <div className={complexity === COMPLEXITY.HARD ? styles.gameGridHard : styles.gameGridEasy}>
-        {pictures.map((picture, id) => (
-          <div
-            key={id}
-            onClick={isStartGame ? () => handlerCLickItem(id) : null}
-            style={{
-              background:
-                  `${DEFAULT_COLOR} ${
-                    isOpenedNowItem(id, opensItems, choosenItems)
-                      ? `url(${picture}) center / 85% no-repeat`
-                      : ''
-                  }`,
-            }}
-            className={styles.gridItem}
-          />
-        ))}
-      </div>
-      <progress className={styles.progressbar} value={opensItems.length} max={countItems} />
-      {isShowLearn && <LearnPopup toggleShowLearn={() => dispatch(toggleShowLearnAC(false))} />}
+      <motion.div
+        className={complexity === COMPLEXITY.HARD ? styles.gameGridHard : styles.gameGridEasy}
+      >
+        <GameItems {...{
+          pictures, isStartGame, handlerCLickItem, opensItems, chosenItems, isShowLearn,
+        }}
+        />
+      </motion.div>
+      <ProgressBar />
     </div>
   )
 }
