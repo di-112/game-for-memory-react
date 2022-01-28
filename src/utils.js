@@ -11,4 +11,4 @@ export const isOpenedNowItem = (id, opensItems, chosenItems) => opensItems.inclu
 export const getComplexity = location => location.pathname.split('').slice(1).join('')
 
 export const getPictures = (context = require.context('./img/pictures/', false, /\.(png|jpe?g|svg)$/)) => context
-  .keys().map(picture => context(picture).default)
+  .keys().map(picture => context(picture))
