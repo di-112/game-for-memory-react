@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/game-for-memory-react/static/css/main.28adc046.chunk.css",
-    "main.js": "/game-for-memory-react/static/js/main.0892bc35.chunk.js",
-    "main.js.map": "/game-for-memory-react/static/js/main.0892bc35.chunk.js.map",
-    "runtime-main.js": "/game-for-memory-react/static/js/runtime-main.d3711642.js",
-    "runtime-main.js.map": "/game-for-memory-react/static/js/runtime-main.d3711642.js.map",
-    "static/js/2.b6428077.chunk.js": "/game-for-memory-react/static/js/2.b6428077.chunk.js",
-    "static/js/2.b6428077.chunk.js.map": "/game-for-memory-react/static/js/2.b6428077.chunk.js.map",
-    "static/js/3.e3151ef4.chunk.js": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js",
-    "static/js/3.e3151ef4.chunk.js.map": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js.map",
+    "main.css": "/game-for-memory-react/static/css/main.89038ac0.chunk.css",
+    "main.js": "/game-for-memory-react/static/js/main.ec23cbda.chunk.js",
+    "main.js.map": "/game-for-memory-react/static/js/main.ec23cbda.chunk.js.map",
+    "runtime-main.js": "/game-for-memory-react/static/js/runtime-main.689c18a1.js",
+    "runtime-main.js.map": "/game-for-memory-react/static/js/runtime-main.689c18a1.js.map",
+    "static/js/2.6bc65403.chunk.js": "/game-for-memory-react/static/js/2.6bc65403.chunk.js",
+    "static/js/2.6bc65403.chunk.js.map": "/game-for-memory-react/static/js/2.6bc65403.chunk.js.map",
+    "static/js/3.b16bb150.chunk.js": "/game-for-memory-react/static/js/3.b16bb150.chunk.js",
+    "static/js/3.b16bb150.chunk.js.map": "/game-for-memory-react/static/js/3.b16bb150.chunk.js.map",
     "index.html": "/game-for-memory-react/index.html",
-    "static/css/main.28adc046.chunk.css.map": "/game-for-memory-react/static/css/main.28adc046.chunk.css.map",
-    "static/js/2.b6428077.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/2.b6428077.chunk.js.LICENSE.txt",
-    "static/js/3.e3151ef4.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/3.e3151ef4.chunk.js.LICENSE.txt",
+    "static/css/main.89038ac0.chunk.css.map": "/game-for-memory-react/static/css/main.89038ac0.chunk.css.map",
+    "static/js/2.6bc65403.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/2.6bc65403.chunk.js.LICENSE.txt",
+    "static/js/3.b16bb150.chunk.js.LICENSE.txt": "/game-for-memory-react/static/js/3.b16bb150.chunk.js.LICENSE.txt",
     "static/media/1.svg": "/game-for-memory-react/static/media/1.5a1176ae.svg",
     "static/media/10.svg": "/game-for-memory-react/static/media/10.8837c61c.svg",
     "static/media/2.svg": "/game-for-memory-react/static/media/2.9f7ff5e4.svg",
@@ -36,9 +36,9 @@
     "static/media/win.0feba87e.gif": "/game-for-memory-react/static/media/win.0feba87e.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.d3711642.js",
-    "static/js/2.b6428077.chunk.js",
-    "static/css/main.28adc046.chunk.css",
-    "static/js/main.0892bc35.chunk.js"
+    "static/js/runtime-main.689c18a1.js",
+    "static/js/2.6bc65403.chunk.js",
+    "static/css/main.89038ac0.chunk.css",
+    "static/js/main.ec23cbda.chunk.js"
   ]
 }
