@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start": "cross-env NODE_ENV=development webpack serve --mode development --open"
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --open",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Vezankin Dmitry <di150499@gmail.com>",
   "license": "ISC",
