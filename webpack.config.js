@@ -25,7 +25,7 @@ module.exports = {
     assetModuleFilename: 'images/[name][hash][ext]',
   },
   devServer: {
-    port: 3000,
+    port: process.env.PORT || 3000,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
