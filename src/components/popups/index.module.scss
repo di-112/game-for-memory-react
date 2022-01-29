@@ -16,7 +16,6 @@
   background: rgba(0, 0, 0, 0.8);
   transition: all 0.8s ease 0s;
   animation: move 0.8s;
-
   @media (max-width: 1200px) {
     justify-content: flex-start;
     padding: 50px 0 0;
@@ -101,7 +100,7 @@
   padding: 70px 150px;
   max-width: 1000px;
   background: rgba(255, 255, 255, 0.8);
-
+  will-change: transform;
   @media (max-width: 600px) {
     padding: 70px 20px;
   }

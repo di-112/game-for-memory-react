@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
 import {
-  createGameThunk, toggleLooseAC, toggleShowLearnAC, toggleWinAC,
+  createGameThunk, resetOpenItemsAC, toggleLooseAC, toggleShowLearnAC, toggleWinAC,
 } from '../../redux/actions/actions'
 import { LEAR_POPUP_TEXT } from '../../enums'
 import styles from './index.module.scss'
@@ -32,7 +32,7 @@ const variants = {
 export const LoosePopup = () => {
   const dispatch = useDispatch()
 
-  const complexity = useSelector(state => state?.info.complexityGame)
+  const complexityGame = useSelector(state => state?.info.complexityGame)
 
   useEffect(() => {
     dispatch(toggleLooseAC(true))
@@ -48,9 +48,11 @@ export const LoosePopup = () => {
         variants={variants}
       >
         <p>Loose(((</p>
-        <img src={looseGif} alt="winner" />
+        <img src={looseGif} alt="looser" />
         <button
-          onClick={() => dispatch(createGameThunk(complexity))}
+          onClick={() => {
+            dispatch(createGameThunk(complexityGame))
+          }}
           className={styles.play_again}
         >
           play again
@@ -98,7 +100,12 @@ export const WinPopup = () => {
         </div>
         <img src={winGif} alt="winner" />
         <button
-          onClick={() => dispatch(createGameThunk(complexityGame))}
+          onClick={() => {
+            dispatch(dispatch(resetOpenItemsAC()))
+            setTimeout(() => {
+              dispatch(createGameThunk(complexityGame))
+            }, 500)
+          }}
           className={styles.play_again}
         >
           play again

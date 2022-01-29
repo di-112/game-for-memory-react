@@ -57,7 +57,6 @@ module.exports = {
       filename: 'index.html',
       template: './index.html',
       favicon: './favicon.svg',
-      preload: ['**/*.jpeg', '**/*.png', '**/*.jpg'],
       cache: isDev,
     }),
     new HtmlWebpackInjectPreload({
@@ -90,10 +89,6 @@ module.exports = {
       {
         test: /\.css$/i,
         use: getCssLoaders(),
-      },
-      {
-        test: /\.less/i,
-        use: getCssLoaders('less-loader'),
       },
       {
         test: /\.s[ac]ss/i,

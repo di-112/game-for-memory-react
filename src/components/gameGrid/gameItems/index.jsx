@@ -7,12 +7,12 @@ import { DEFAULT_COLOR } from '../../../enums'
 const variants = {
 
   hidden: {
-    opacity: 0,
-    transition: { duration: 0.2 },
+    scale: 0.5,
+    transition: { duration: 0.1 },
   },
   visible: {
-    opacity: 1,
-    transition: { duration: 0.2 },
+    scale: 1,
+    transition: { duration: 0.1 },
   },
 }
 
