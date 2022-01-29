@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const HtmlWebpackInjectPreload = require('@principalstudio/html-webpack-inject-preload')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -22,7 +22,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: getFileName('js'),
-    assetModuleFilename: 'images/[hash][ext]',
+    assetModuleFilename: 'images/[name][hash][ext]',
   },
   devServer: {
     port: 3000,
@@ -57,12 +57,36 @@ module.exports = {
       filename: 'index.html',
       template: './index.html',
       favicon: './favicon.svg',
+      preload: ['**/*.jpeg', '**/*.png', '**/*.jpg'],
       cache: isDev,
     }),
-    new PreloadWebpackPlugin({
-      rel: 'prefetch',
-      include: 'allAssets',
+    new HtmlWebpackInjectPreload({
+      files: [
+        {
+          match: /.*\.woff2$/,
+          attributes: { as: 'font', type: 'font/woff2', crossorigin: true },
+        },
+        {
+          match: /.*\.(png|jpg|gif|mp3|svg)$/,
+          attributes: { as: 'image' },
+        },
+        {
+          match: /vendors\.[a-z-0-9]*.css$/,
+          attributes: { as: 'style' },
+        },
+      ],
     }),
+    /* new PreloadWebpackPlugin({
+      rel: 'preload',
+      as(entry) {
+        if (/\.css$/.test(entry)) return 'style'
+        if (/\.woff$/.test(entry)) return 'font'
+        if (/\.mp3$/.test(entry)) return 'audio'
+        if (/\.(png|jpg|gif|mp3|svg)$/.test(entry)) return 'image'
+        return 'script'
+      },
+      include: 'allAssets',
+    }), */
     new MiniCssExtractPlugin({
       filename: getFileName('css'),
       chunkFilename: '[id].css',
