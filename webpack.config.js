@@ -76,17 +76,6 @@ module.exports = {
         },
       ],
     }),
-    /* new PreloadWebpackPlugin({
-      rel: 'preload',
-      as(entry) {
-        if (/\.css$/.test(entry)) return 'style'
-        if (/\.woff$/.test(entry)) return 'font'
-        if (/\.mp3$/.test(entry)) return 'audio'
-        if (/\.(png|jpg|gif|mp3|svg)$/.test(entry)) return 'image'
-        return 'script'
-      },
-      include: 'allAssets',
-    }), */
     new MiniCssExtractPlugin({
       filename: getFileName('css'),
       chunkFilename: '[id].css',
