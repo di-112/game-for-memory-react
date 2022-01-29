@@ -6,9 +6,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "devStart": "cross-env NODE_ENV=development webpack serve --mode development --open",
+    "dev": "cross-env NODE_ENV=development webpack serve --mode development --open",
     "start": "node app",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
