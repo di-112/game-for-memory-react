@@ -6,8 +6,11 @@
   margin: 0 -10px;
 }
 
-.gameComplex a {
+.gameComplex button {
   margin: 0 10px;
+  &:hover{
+    transform: none;
+  }
 }
 
 @media (max-width: 1200px) {

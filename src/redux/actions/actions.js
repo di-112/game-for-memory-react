@@ -7,9 +7,9 @@ const {
   SET_TIME,
   SET_ALL_TIME,
   SET_COUNT_ITEMS,
-  ADD_CHOOSEN_ITEM,
+  ADD_CHOSEN_ITEM,
   RESET_OPENS_ITEMS,
-  RESET_CHOOSEN_ITEMS,
+  RESET_CHOSEN_ITEMS,
   ADD_OPENS_ITEM,
   SET_PICTURES,
   TOGGLE_SHOW_LEARN,
@@ -42,9 +42,9 @@ export const addOpensItemAC = item => ({ type: ADD_OPENS_ITEM, item })
 
 export const resetOpenItemsAC = () => ({ type: RESET_OPENS_ITEMS })
 
-export const addChoosenItemAC = item => ({ type: ADD_CHOOSEN_ITEM, item })
+export const addChosenItemAC = item => ({ type: ADD_CHOSEN_ITEM, item })
 
-export const resetChoosenItemsAC = () => ({ type: RESET_CHOOSEN_ITEMS })
+export const resetChosenItemsAC = () => ({ type: RESET_CHOSEN_ITEMS })
 
 const setGameProperties = (dispatch, countItems, time, PICTURES) => {
   dispatch(setCountItemsAC(countItems))
@@ -58,7 +58,7 @@ export const createGameThunk = complexity => dispatch => {
   dispatch(toggleLooseAC(false))
   dispatch(toggleWinAC(false))
   dispatch(setComplexityAC(complexity))
-  dispatch(resetChoosenItemsAC())
+  dispatch(resetChosenItemsAC())
   dispatch(resetOpenItemsAC())
   switch (complexity) {
     case COMPLEXITY.EASY: setGameProperties(dispatch, 12, 30, PICTURES.filter((_, index) => index < 6)); break

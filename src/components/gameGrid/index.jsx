@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router'
 import { AnimatePresence, motion, useAnimation } from 'framer-motion'
 import PanelComplexity from './panelComplexity'
 import { LearnPopup, LoosePopup, WinPopup } from '../popups'
 import {
-  addChoosenItemAC,
+  addChosenItemAC,
   addOpensItemAC,
   createGameThunk,
-  resetChoosenItemsAC,
+  resetChosenItemsAC,
   setTimeAC,
   toggleShowLearnAC,
 } from '../../redux/actions/actions'
 import { COMPLEXITY, TIME_SHOW_ITEM } from '../../enums'
-import {
-  getComplexity, isGameOver, isGameWin, isRightChoose,
-} from '../../utils'
+import { isGameOver, isGameWin, isRightChoose } from '../../utils'
 import styles from './index.module.scss'
 import GameItems from './gameItems'
 import ProgressBar from '../progressBar'
@@ -23,8 +20,6 @@ import ProgressBar from '../progressBar'
 let timeout
 
 const GameGrid = () => {
-  const location = useLocation()
-
   const dispatch = useDispatch()
 
   const {
@@ -35,27 +30,26 @@ const GameGrid = () => {
     opensItems,
     chosenItems,
     isShowLearn,
+    complexityGame: complexity,
   } = useSelector(state => state?.info)
-
-  const complexity = getComplexity(location)
 
   const createGame = complexity => dispatch(createGameThunk(complexity))
   const addOpensItem = item => dispatch(addOpensItemAC(item))
-  const resetChoosenItems = () => dispatch(resetChoosenItemsAC())
+  const resetChosenItems = () => dispatch(resetChosenItemsAC())
   const handlerCLickItem = id => {
-    if (!opensItems.includes(id) && chosenItems.length < 2) dispatch(addChoosenItemAC(id))
+    if (!opensItems.includes(id) && chosenItems.length < 2) dispatch(addChosenItemAC(id))
   }
 
   useEffect(() => {
     createGame(complexity)
-  }, [location.pathname])
+  }, [complexity])
 
   useEffect(() => {
     if (chosenItems.length === 2) {
       if (isRightChoose(chosenItems, pictures)) {
         chosenItems.map(item => addOpensItem(item))
-        resetChoosenItems()
-      } else setTimeout(() => resetChoosenItems(), TIME_SHOW_ITEM)
+        resetChosenItems()
+      } else setTimeout(() => resetChosenItems(), TIME_SHOW_ITEM)
     }
   }, [chosenItems])
 

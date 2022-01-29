@@ -7,9 +7,9 @@ const {
   SET_TIME,
   SET_ALL_TIME,
   SET_COUNT_ITEMS,
-  ADD_CHOOSEN_ITEM,
+  ADD_CHOSEN_ITEM,
   RESET_OPENS_ITEMS,
-  RESET_CHOOSEN_ITEMS,
+  RESET_CHOSEN_ITEMS,
   ADD_OPENS_ITEM,
   SET_PICTURES,
   TOGGLE_SHOW_LEARN,
@@ -55,9 +55,9 @@ const infoReducer = (state = initialState, action = {}) => {
 
     case ADD_OPENS_ITEM: return ({ ...state, opensItems: [...state.opensItems.concat([action.item])] })
 
-    case RESET_CHOOSEN_ITEMS: return ({ ...state, chosenItems: [] })
+    case RESET_CHOSEN_ITEMS: return ({ ...state, chosenItems: [] })
 
-    case ADD_CHOOSEN_ITEM: return ({
+    case ADD_CHOSEN_ITEM: return ({
       ...state,
       chosenItems: [...state.chosenItems.concat([action.item])],
     })
