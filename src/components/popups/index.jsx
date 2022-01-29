@@ -123,7 +123,7 @@ export const LearnPopup = () => {
       >
         <div>
           {LEAR_POPUP_TEXT.map(paragraph => (
-            <p>
+            <p key={paragraph}>
               {paragraph}
               <br />
             </p>

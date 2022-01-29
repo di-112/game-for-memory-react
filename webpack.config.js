@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -34,6 +36,18 @@ module.exports = {
     },
     minimizer: [
       new TerserPlugin(),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.squooshMinify,
+          options: {
+            encodeOptions: {
+              mozjpeg: { quality: 100 },
+              webp: { lossless: 1 },
+              avif: { cqLevel: 0 },
+            },
+          },
+        },
+      }),
     ],
   },
   devtool: isDev ? 'source-map' : false,
@@ -44,6 +58,10 @@ module.exports = {
       template: './index.html',
       favicon: './favicon.svg',
       cache: isDev,
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'prefetch',
+      include: 'allAssets',
     }),
     new MiniCssExtractPlugin({
       filename: getFileName('css'),
