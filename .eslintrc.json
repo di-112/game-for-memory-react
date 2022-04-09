@@ -5,9 +5,11 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "google",
-    "airbnb"
+    "airbnb",
+    "airbnb-typescript"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -17,10 +19,12 @@
     "ecmaFeatures": {
       "jsx": true
     },
+    "project": "./tsconfig.json",
     "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": [
+    "@typescript-eslint",
     "react"
   ],
   "rules": {
@@ -43,10 +47,12 @@
       "always"
     ],
     "no-shadow": "off",
+    "@typescript-eslint/semi": "off",
     "react/button-has-type": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "react/no-array-index-key": "off",
+    "@typescript-eslint/default-param-last": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",

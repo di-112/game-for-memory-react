@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import styles from '../gameGrid/index.module.scss'
+import React, { FC, useEffect, useState } from 'react'
+import styles from '../gameGrid/style.scss'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
-const ProgressBar = () => {
+const ProgressBar: FC = () => {
   const {
     countItems,
     opensItems,
-  } = useSelector(state => state?.info)
+  } = useTypedSelector(state => state)
 
   const [value, setValue] = useState(0)
 
@@ -30,4 +30,4 @@ const ProgressBar = () => {
   )
 }
 
-export default ProgressBar
+export default React.memo(ProgressBar)

@@ -10,15 +10,22 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const getFileName = ext => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`)
 
-const getCssLoaders = extra => {
-  const loaders = [isDev ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'postcss-loader']
+const getCssLoaders = (extra, isModules = true) => {
+  const loaders = [isDev ? MiniCssExtractPlugin.loader : 'style-loader', {
+    loader: 'css-loader',
+    options: isModules ? {
+      modules: {
+        localIdentName: '[name]__[local]___[hash:base64:5]',
+      },
+    } : {},
+  }, 'postcss-loader']
   if (extra) loaders.push(extra)
   return loaders
 }
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  entry: ['@babel/polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: getFileName('js'),
@@ -28,7 +35,7 @@ module.exports = {
     port: 3000,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   optimization: {
     splitChunks: {
@@ -103,6 +110,11 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
+      },
+      {
+        test: /\.m?tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
       },
     ],
   },

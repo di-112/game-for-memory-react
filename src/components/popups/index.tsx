@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { FC, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  createGameThunk, resetOpenItemsAC, toggleLooseAC, toggleShowLearnAC, toggleWinAC,
-} from '../../redux/actions/actions'
 import { LEAR_POPUP_TEXT } from '../../enums'
-import styles from './index.module.scss'
+import styles from './style.scss'
 import looseGif from '../../img/loose.gif'
 import winGif from '../../img/win.gif'
 import beforeImg from '../../img/before.png'
 import arrImg from '../../img/arr.png'
 import afterImg from '../../img/after.png'
+import { useAction } from '../../hooks/useAction'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const variants = {
   hidden: {
@@ -29,13 +27,16 @@ const variants = {
   },
 }
 
-export const LoosePopup = () => {
-  const dispatch = useDispatch()
+export const LoosePopup: FC = () => {
+  const {
+    createGame,
+    toggleLoose,
+  } = useAction()
 
-  const complexityGame = useSelector(state => state?.info.complexityGame)
+  const complexityGame = useTypedSelector(state => state.complexityGame)
 
   useEffect(() => {
-    dispatch(toggleLooseAC(true))
+    toggleLoose(true)
   }, [])
 
   return (
@@ -51,7 +52,7 @@ export const LoosePopup = () => {
         <img src={looseGif} alt="looser" />
         <button
           onClick={() => {
-            dispatch(createGameThunk(complexityGame))
+            createGame(complexityGame)
           }}
           className={styles.play_again}
         >
@@ -62,21 +63,25 @@ export const LoosePopup = () => {
   )
 }
 
-export const WinPopup = () => {
+export const WinPopup: FC = () => {
   const {
     time,
     allTime,
     complexityGame,
-  } = useSelector(state => ({
-    time: state?.info.time,
-    allTime: state?.info.allTime,
-    complexityGame: state?.info.complexityGame,
+  } = useTypedSelector(state => ({
+    time: state.time,
+    allTime: state.allTime,
+    complexityGame: state.complexityGame,
   }))
 
-  const dispatch = useDispatch()
+  const {
+    createGame,
+    toggleWin,
+    resetOpenItems,
+  } = useAction()
 
   useEffect(() => {
-    dispatch(toggleWinAC(true))
+    toggleWin(true)
   }, [])
 
   return (
@@ -88,9 +93,9 @@ export const WinPopup = () => {
         exit={variants.hidden}
         variants={variants}
       >
-        <div className={styles}>
+        <div>
           <p>Win!!!</p>
-          <p className={styles}>
+          <p>
             You result:
             {' '}
             {allTime - time}
@@ -101,9 +106,9 @@ export const WinPopup = () => {
         <img src={winGif} alt="winner" />
         <button
           onClick={() => {
-            dispatch(dispatch(resetOpenItemsAC()))
+            resetOpenItems()
             setTimeout(() => {
-              dispatch(createGameThunk(complexityGame))
+              createGame(complexityGame)
             }, 500)
           }}
           className={styles.play_again}
@@ -115,8 +120,10 @@ export const WinPopup = () => {
   )
 }
 
-export const LearnPopup = () => {
-  const dispatch = useDispatch()
+export const LearnPopup: FC = () => {
+  const {
+    toggleShowLearn,
+  } = useAction()
   return (
     <div
       className={styles.info}
@@ -142,7 +149,7 @@ export const LearnPopup = () => {
           <img className={styles.info__img} src={afterImg} alt="after" />
         </div>
         <button
-          onClick={() => dispatch(toggleShowLearnAC(false))}
+          onClick={() => toggleShowLearn(false)}
           className={styles.btn_open_game}
         >
           ok
