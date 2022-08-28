@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import cn from 'classnames'
-import Background from '../background'
-import GameGrid from '../gameGrid'
-import PanelStartGame from '../panelStartGame'
-import Sound from '../sound'
+import Background from '../Background'
+import GameGrid from '../GameGrid'
+import PanelStartGame from '../PanelStartGame'
+import Sound from '../Sound'
 import styles from './style.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 

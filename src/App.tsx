@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
-import GameWrapper from './components/gameWrapper'
+import Game from './components/Game'
 import './scss/App.scss'
 
 const App: FC = () => (
   <Provider store={store}>
-    <GameWrapper />
+    <Game />
   </Provider>
 )
 

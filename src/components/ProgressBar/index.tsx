@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import styles from '../gameGrid/style.scss'
+import styles from '../GameGrid/style.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 const ProgressBar: FC = () => {

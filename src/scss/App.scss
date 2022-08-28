@@ -11,36 +11,38 @@ html,
 body {
   height: 100vh;
 }
+:global{
 
-button,
-a {
-  @include adaptiv-font(32,15);
+  button,
+  a {
+    @include adaptiv-font(32,15);
 
-  border: 3px solid white;
-  border-radius: 15px;
-  padding: 1.85vh 2vw;
-  min-width: 170px;
-  text-align: center;
-  text-transform: uppercase;
-  color: white;
-  background: black;
-  transition: transform 0.5s ease 0s;
-}
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 1.85vh 2vw;
+    min-width: 170px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    background: black;
+    transition: transform 0.5s ease 0s;
+  }
 
-a.active,
-button.active {
-  border: 3px solid green;
-  box-shadow: 0 0 50px rgba(0, 128, 0, 0.5);
-  color: green;
-  transition: all 0.8s ease 0s;
-}
+  a.active,
+  button.active {
+    border: 3px solid green;
+    box-shadow: 0 0 50px rgba(0, 128, 0, 0.5);
+    color: green;
+    transition: all 0.8s ease 0s;
+  }
 
-a.active:hover,
-button.active:hover {
-  transform: none;
-}
+  a.active:hover,
+  button.active:hover {
+    transform: none;
+  }
 
-button:hover {
-  transform: scale(0.9);
-  cursor: pointer;
+  button:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+  }
 }

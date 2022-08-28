@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import PanelComplexity from './panelComplexity'
+import PanelComplexity from './PanelComplexity'
 import { LearnPopup, LoosePopup, WinPopup } from '../popups'
 import { isGameOver, isGameWin, updateGameGrid } from '../../utils'
 import styles from './style.scss'
-import GameItems from './gameItems'
-import ProgressBar from '../progressBar'
+import GameItems from './GameItems'
+import ProgressBar from '../ProgressBar'
 import { useAction } from '../../hooks/useAction'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
-import Timer from './timer'
+import Timer from './Timer'
 
 const GameGrid = () => {
   const {
