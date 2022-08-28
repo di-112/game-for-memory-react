@@ -27,6 +27,9 @@ $heightItem: calc(100vh / 8);
 }
 
 .gridItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid white;
   width: $widthItem;
   height: $heightItem;

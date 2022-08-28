@@ -1,23 +1,24 @@
 import { getPictures } from './utils'
 
+export enum BackgroundType {
+  RAIN = 'rain',
+  SEA = 'sea',
+  FIRE = 'fire',
+}
+
+export enum ComplexityType {
+  EASY = 'easy',
+  MIDDLE = 'middle',
+  HARD = 'hard',
+}
+
 export const PICTURES = getPictures()
 
-export const BACKGROUND_TYPES = {
-  RAIN: 'rain',
-  SEA: 'sea',
-  FIRE: 'fire',
-}
 export const DEFAULT_COLOR = 'rgba(0, 0, 0, .9)'
 
 export const ACTIVE_CLASS = 'active'
 
 export const TIME_SHOW_ITEM = 500
-
-export const COMPLEXITY = {
-  EASY: 'easy',
-  MIDDLE: 'middle',
-  HARD: 'hard',
-}
 
 export const LEAR_POPUP_TEXT = [
   ` Перед вами будет представлено игровое поле из четного количества квадратов,
